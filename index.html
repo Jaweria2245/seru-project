@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Seeru Flights</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+   
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-white py-3 px-4 shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                <img src="./images/logo (1).png" alt="plane logo" />
+                <!-- <span class="logo-text">seeru</span> -->
+            </a>
+    
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex flex-row gap-3 ms-4">
+                <li class="nav-item">
+                    <a class="nav-link active icon-text" href="#"><i class="bi bi-airplane-engines"></i> Fly</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link icon-text" href="#"><i class="bi bi-passport"></i> Visa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link icon-text" href="#"><i class="bi bi-briefcase"></i> Manage Booking</a>
+                </li>
+            </ul>
+    
+            <ul class="navbar-nav d-flex flex-row align-items-center gap-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link icon-text dropdown-toggle" href="#" id="navbarDropdownCall" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-headset"></i> Call us for lowest fares <i class="bi bi-chevron-down small"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownCall">
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <i class="bi bi-whatsapp text-success"></i> WhatsApp <i class="bi bi-chat-left-fill ms-auto text-secondary"></i>
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/ae.png" alt="UAE Flag" class="flag-icon rounded-circle" width="20" height="20"> UAE <i class="bi bi-telephone-fill ms-auto text-success"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/sa.png" alt="KSA Flag" class="flag-icon rounded-circle" width="20" height="20"> KSA <i class="bi bi-telephone-fill ms-auto text-success"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/eg.png" alt="Egypt Flag" class="flag-icon rounded-circle" width="20" height="20"> Egypt <i class="bi bi-telephone-fill ms-auto text-success"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link icon-text dropdown-toggle" href="#" id="navbarDropdownLang" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-translate"></i> English <i class="bi bi-chevron-down small"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownLang">
+                        <li><a class="dropdown-item" href="#">Arabic</a></li>
+                        <li><a class="dropdown-item" href="#">French</a></li>
+                        </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link icon-text dropdown-toggle" href="#" id="navbarDropdownCurrency" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://flagcdn.com/us.svg" alt="US Flag" class="flag-icon rounded-circle" width="20" height="20" />
+                        USD <i class="bi bi-chevron-down small"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownCurrency">
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/us.png" alt="USD Flag" class="flag-icon rounded-circle" width="20" height="20"> USD Dollar
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/us.png" alt="UST Flag" class="flag-icon rounded-circle" width="20" height="20"> UST USD Tether
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/eu.png" alt="EUR Flag" class="flag-icon rounded-circle" width="20" height="20"> EUR Euro
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/gb.png" alt="GBP Flag" class="flag-icon rounded-circle" width="20" height="20"> GBP Pound
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/id.png" alt="IDR Flag" class="flag-icon rounded-circle" width="20" height="20"> IDR Rupiah
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/nz.png" alt="NZD Flag" class="flag-icon rounded-circle" width="20" height="20"> NZD Dollar
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/kz.png" alt="KZT Flag" class="flag-icon rounded-circle" width="20" height="20"> KZT Tenge
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/eg.png" alt="EGP Flag" class="flag-icon rounded-circle" width="20" height="20"> EGP Pound
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/al.png" alt="ALL Flag" class="flag-icon rounded-circle" width="20" height="20"> ALL Lek
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/in.png" alt="INR Flag" class="flag-icon rounded-circle" width="20" height="20"> INR Rupee
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/tr.png" alt="TRY Flag" class="flag-icon rounded-circle" width="20" height="20"> TRY Lira
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/dz.png" alt="DZD Flag" class="flag-icon rounded-circle" width="20" height="20"> DZD Unknown
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/ae.png" alt="AED Flag" class="flag-icon rounded-circle" width="20" height="20"> AED Dirham
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/sa.png" alt="SAR Flag" class="flag-icon rounded-circle" width="20" height="20"> SAR Riyal
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/au.png" alt="AUD Flag" class="flag-icon rounded-circle" width="20" height="20"> AUD Dollar
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/ch.png" alt="CHF Flag" class="flag-icon rounded-circle" width="20" height="20"> CHF Franc
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/cn.png" alt="CNY Flag" class="flag-icon rounded-circle" width="20" height="20"> CNY Renminbi
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/ng.png" alt="NGN Flag" class="flag-icon rounded-circle" width="20" height="20"> NGN Naira
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/bd.png" alt="BDT Flag" class="flag-icon rounded-circle" width="20" height="20"> BDT Taka
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/om.png" alt="OMR Flag" class="flag-icon rounded-circle" width="20" height="20"> OMR Rial
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/my.png" alt="MYR Flag" class="flag-icon rounded-circle" width="20" height="20"> MYR Ringgit
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/ru.png" alt="RUB Flag" class="flag-icon rounded-circle" width="20" height="20"> RUB Ruble
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+  
+  <!-- Header -->
+  <div class=" p-5" style="background: linear-gradient(to right, #1e293b, #334155); color: white;">
+    <h2 class="fw-bold">Book Affordable Flights Easily</h2>
+    <p>Find great deals and enjoy smooth booking for your travels.</p>
+  </div>
+
+  <!-- Booking Form -->
+  <div class="container booking-card">
+    <!-- Tabs -->
+    <div class="d-flex gap-3 tab-btns mb-4">
+      <button class="btn active">One way</button>
+      <button class="btn btn-light text-muted">Round trip</button>
+      <button class="btn btn-light text-muted">Multi city</button>
+    </div>
+
+    <!-- Form in One Row -->
+    <form>
+      <div class="row position-relative g-3 ">
+        <!-- From -->
+        <div class="col-md-2">
+          <div class="form-box"><i class="bi bi-geo-alt"></i> From<br><small class="text-muted">City or Airport</small></div>
+        </div>
+
+        <!-- Swap Button (absolute, between From & To) -->
+        <div class="col-md-1 d-flex align-items-center justify-content-center position-relative">
+          <button class="swap-btn" type="button"><i class="bi bi-arrow-left-right"></i></button>
+        </div>
+
+        <!-- To -->
+        <div class="col-md-2">
+          <div class="form-box"><i class="bi bi-geo-alt-fill"></i> To<br><small class="text-muted">City or Airport</small></div>
+        </div>
+
+        <!-- Departure -->
+        <div class="col-md-2">
+          <div class="form-box"><i class="bi bi-calendar-event"></i> Departure<br><span class="fw-semibold text-dark">Wed, Apr 23</span></div>
+        </div>
+
+        <!-- Return -->
+        <div class="col-md-2">
+          <div class="form-box text-muted"><i class="bi bi-calendar2"></i> Return<br>Return Date</div>
+        </div>
+
+        <!-- Traveler -->
+        <div class="col-md-3">
+          <div class="form-box"><i class="bi bi-person"></i> Traveler & Class<br><span class="fw-semibold text-dark">1 Traveler, Economy</span></div>
+        </div>
+      </div>
+
+      <!-- Button below the row -->
+      <div class="text-center mt-4">
+        <button class="fly-btn">Let's Fly <i class="bi bi-arrow-right-short"></i></button>
+      </div>
+    </form>
+  </div>
+<!-- section2 -->
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-4 mb-4 mb-md-0 d-flex align-items-center">
+            <img src="./images/why-us-1-new.png" alt="Image 1" class="img-fluid me-3" style="max-width: 80px; height: auto;">
+            <div>
+                <h5>Top-Rated by Travelers</h5>
+                <p>Loved by travellers worldwide, with a 5-star rating for service and experience!</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4 mb-md-0 d-flex align-items-center">
+            <img src="./images/why-us-2.png" alt="Image 2" class="img-fluid me-3" style="max-width: 80px; height: auto;">
+            <div>
+                <h5>Customer Happiness Centre</h5>
+                <p>Instant WhatsApp support helps you book flights anywhere</p>
+            </div>
+        </div>
+        <div class="col-md-4 d-flex align-items-center">
+            <img src="./images/why-us-3.png" alt="Image 3" class="img-fluid me-3" style="max-width: 80px; height: auto;">
+            <div>
+                <h5>Verified & Secured</h5>
+                <p>Seeru secures data transmission, never sells your personal information.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<hr class="w-75 mx-auto">
+<!-- section 3 -->
+<div class="container py-5">
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card h-100" style="background-color: #f8f9fa;">
+                <div class="card-body d-flex flex-column align-items-start justify-content-between">
+                    <div class="align-self-start mt-2">
+                        <i class="bi bi-arrow-right-short fs-1 text-primary"></i>
+                        <h6 class="special-offer-text">Special Offer</h6>
+                    </div>
+                    <div class="pt-2">
+                        <h2 class="card-title">Apply for <span class="text-nowrap">UAE Visa</span> Now!</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-header position-relative">
+                    <div class="special-offer-tag">Special Offer</div>
+                    <img src="./images/30.png" alt="Dubai Cityscape" class="card-img-top">
+                </div>
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h3 class="card-title m-0">30 Days Visa</h3>
+                        <button class="btn btn-success">Apply</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-header position-relative">
+                    <div class="special-offer-tag">Special Offer</div>
+                    <img src="./images/60.png" alt="Dubai Cityscape" class="card-img-top">
+                </div>
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h3 class="card-title m-0">60 Days Visa</h3>
+                        <button class="btn btn-success">Apply</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Why Choose Seeru Section -->
+
+<div class="container py-5">
+    <h2 class="text-center mb-4">Why Choose Seeru?</h2>
+    <p class="text-center mb-5 text-secondary">Transforming Your Travel Expectations into Extraordinary Journeys. Choose Us for a Seamless and Unparalleled Travel Experience.</p>
+    <div class="row  justify-content-center">
+      <div class="col-md-4 col-lg-3">
+        <div class="text-center">
+          <i class="bi bi-clipboard-check fs-1 text-dark mb-2"></i>
+          <h3 class="h5">Personalized Result</h3>
+          <p class="text-secondary small">Travel experiences uniquely tailored to suit your preferences.</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-lg-3">
+        <div class="text-center">
+          <i class="bi bi-wallet2 fs-1 text-dark mb-2"></i>
+          <h3 class="h5">Pocket Friendly</h3>
+          <p class="text-secondary small">Budget-friendly options without compromising on quality.</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-lg-2">
+        <div class="text-center">
+          <i class="bi bi-shield-check fs-1 text-dark mb-2"></i>
+          <h3 class="h5">Safe & Secure</h3>
+          <p class="text-secondary small">Ensuring your safety and security throughout your travels.</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-lg-2">
+        <div class="text-center">
+          <i class="bi bi-headset fs-1 text-dark mb-2"></i>
+          <h3 class="h5">24/7 Support</h3>
+          <p class="text-secondary small">Round-the-clock assistance for all your travel needs.</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-lg-2">
+        <div class="text-center">
+          <i class="bi bi-emoji-smile fs-1 text-dark mb-2"></i>
+          <h3 class="h5">Customer Centric</h3>
+          <p class="text-secondary small">Dedicated to putting your satisfaction at the heart of every service.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Latest Offers & Deals Section -->
+ <section class="deal-section">
+<div  class="container py-5 ">
+    <h2 class="text-start mb-4">Latest Offers & Deals</h2>
+    <div id="offers-carousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row g-4">
+                    <div class="col-6 col-md-4">
+                        <img src="./images/SEERU_WEB_BANNER_112101_-_EN.webp" class="d-block w-100 rounded-4" alt="Offer 1">
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <img src="./images/SEERU_WEB_BANNER_112105_-_EN.webp" class="d-block w-100 rounded-4" alt="Offer 2">
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <img src="./images/SEERU_WEB_BANNER_112106_-_EN.webp" class="d-block w-100 rounded-4" alt="Offer 3">
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row g-4">
+                    <div class="col-6 col-md-4">
+                        <img src="./images/SEERU_WEB_BANNER_112107_-_EN.webp" class="d-block w-100 rounded-4" alt="Offer 4">
+                    </div>
+                     <div class="col-6 col-md-4">
+                        <img src="./images/SEERU_WEB_BANNER_112108_-_EN.webp" class="d-block w-100 rounded-4" alt="Offer 5">
+                    </div>
+                     <div class="col-6 col-md-4">
+                        <img src="./images/SEERU_WEB_BANNER_112110_-_EN.webp" class="d-block w-100 rounded-4" alt="Offer 6">
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#offers-carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#offers-carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <div class="row g-4 mt-2 " style="height: 100px;">
+        <div class="col-md-12" style="height: 100%;">
+            <div class="card h-100 rounded-4 overflow-hidden border-0 ">
+                <div class="card-body bg-success text-white d-flex align-items-center justify-content-between flex-row py-3">
+                    <h3 class="card-title mb-0">Business Events to Attend in Dubai</h3>
+                    <button class="btn btn-outline-light rounded-pill">Download Calendar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+<!-- populer flights section -->
+ <section>
+    <div class="container my-5">
+        <h2 class="text-center mb-3">The most popular flights right now</h2>
+        <p class="text-center text-muted mb-4">Other travellers are loving these destinations. Search and compare flights, hotels, and car hire and join them on the adventure.</p>
+    
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8">
+                <div class="d-flex justify-content-center mb-4">
+                    <div class="nav nav-tabs border-0 custom-tabs" id="myTab" role="tablist">
+                        <button class="nav-link active custom-tab" id="top-popular-flight-tab" data-bs-toggle="tab" data-bs-target="#top-popular-flight" type="button" role="tab" aria-controls="top-popular-flight" aria-selected="true">Top Popular Flight</button>
+                        <button class="nav-link custom-tab" id="top-popular-routes-tab" data-bs-toggle="tab" data-bs-target="#top-popular-routes" type="button" role="tab" aria-controls="top-popular-routes" aria-selected="false">Top Popular Routes</button>
+                    </div>
+                </div>
+    
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="top-popular-flight" role="tabpanel" aria-labelledby="top-popular-flight-tab">
+                        <div class="row">
+                            <div class="col-6 col-lg-4 mb-3">Tokyo to Singapore</div>
+                            <div class="col-6 col-lg-4 mb-3">Los Angeles to Dubai</div>
+                            <div class="col-6 col-lg-4 mb-3">Moscow to Seoul</div>
+                            <div class="col-6 col-lg-4 mb-3">Amsterdam to Frankfurt</div>
+                            <div class="col-6 col-lg-4 mb-3">Mexico City to Rome</div>
+                            <div class="col-6 col-lg-4 mb-3">Delhi to Mumbai</div>
+                            <div class="col-6 col-lg-4 mb-3">Chicago to Miami</div>
+                            <div class="col-6 col-lg-4 mb-3">Mexico City to Rome</div>
+                            <div class="col-6 col-lg-4 mb-3">Delhi to Mumbai</div>
+                            <div class="col-6 col-lg-4 mb-3">Chicago to Miami</div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="top-popular-routes" role="tabpanel" aria-labelledby="top-popular-routes-tab">
+                        <div class="row">
+                             <div class="col-6 col-lg-4 mb-3">Paris to New York</div>
+                            <div class="col-6 col-lg-4 mb-3">Beijing to Bangkok</div>
+                            <div class="col-6 col-lg-4 mb-3">Hong Kong to Istanbul</div>
+                            <div class="col-6 col-lg-4 mb-3">Sydney to Auckland</div>
+                            <div class="col-6 col-lg-4 mb-3">London to Sydney</div>
+                            <div class="col-6 col-lg-4 mb-3">Mexico City to Rome</div>
+                            <div class="col-6 col-lg-4 mb-3">Delhi to Mumbai</div>
+                            <div class="col-6 col-lg-4 mb-3">Chicago to Miami</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+ </section>
+ <!-- google reviews section -->
+ <section class="py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-12 col-lg-4 text-center text-lg-start mb-4 mb-lg-0">
+                <h2 class="h3 fw-bold">Discover What Others Are Saying</h2>
+                <p class="text-muted">
+                    <span class="d-inline-flex align-items-center">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/200px-Google_2015_logo.svg.png" alt="Google Logo" style="height: 20px; margin-right: 5px;">
+                        Google Reviews
+                    </span>
+                    <span class="ms-2 text-warning">★★★★★</span>
+                    <span class="ms-2 text-muted">5.0 out of 5</span>
+                </p>
+                 <a href="#" class="btn btn-outline-primary mt-4 d-none d-lg-inline-block">See all our reviews</a>
+            </div>
+            <div class="col-12 col-lg-8">
+                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row justify-content-center">
+                                <div class="col-md-10 col-lg-8 col-xl-6">
+                                    <div class="card shadow-sm h-100">
+                                        <div class="card-body">
+                                            <p class="card-text">"The 5-star service has a name, Seeru. I'm happy having bought my flights tickets from Dubai to... Read More"</p>
+                                            <p class="card-text"><small class="text-muted">Verified Users</small></p>
+                                            <h6 class="card-title fw-semibold">Lamadou Ndiaye</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row justify-content-center">
+                                <div class="col-md-10 col-lg-8 col-xl-6">
+                                    <div class="card shadow-sm h-100">
+                                        <div class="card-body">
+                                            <p class="card-text">"ABSOLUTELY BRILLIANT WEBSITE! AND WHAT A BRILLIANT CUSTOMER SUPPORT TEAM HIGHLY RECOMMEND USEING...Read More"</p>
+                                            <p class="card-text"><small class="text-muted">Verified Users</small></p>
+                                            <h6 class="card-title fw-semibold">Hussain M U</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row justify-content-center">
+                                <div class="col-md-10 col-lg-8 col-xl-6">
+                                    <div class="card shadow-sm h-100">
+                                        <div class="card-body">
+                                            <p class="card-text">Review from User 3. Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                                            <p class="card-text"><small class="text-muted">Verified Users</small></p>
+                                            <h6 class="card-title fw-semibold">User 3</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row justify-content-center">
+                                 <div class="col-md-10 col-lg-8 col-xl-6">
+                                    <div class="card shadow-sm h-100">
+                                        <div class="card-body">
+                                            <p class="card-text">Review from User 4.  Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua....</p>
+                                            <p class="card-text"><small class="text-muted">Verified Users</small></p>
+                                            <h6 class="card-title fw-semibold">User 4</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                 <a href="#" class="btn btn-outline-primary mt-4 d-lg-none text-center">See all our reviews</a>
+            </div>
+        </div>
+    </div>
+</section>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
