@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Seeru Flights</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        .search-container {
+            background-color: #fff;
+            padding: 20px;
+            /* margin: 20px auto; */
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .flight-details-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 0 20px; /* Add padding to align with container content */
+        }
+        .flight-details-header h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0;
+        }
+        .flight-details-header p {
+            font-size: 0.875rem;
+            color: #6c757d;
+            margin-bottom: 0;
+        }
+        .flight-search-results {
+            display: flex;
+            gap: 20px;
+            padding: 0 20px 20px 20px; /* Add padding around the content */
+        }
+        .filter-column {
+            width: 300px; /* Adjust width as needed */
+            border-right: 1px solid #eee;
+            padding-right: 15px;
+        }
+        .filter-group {
+            margin-bottom: 15px;
+        }
+        .filter-group h6 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        .form-check {
+            padding-left: 1.5em;
+            margin-bottom: 0.5rem;
+        }
+        .form-check-input {
+            float: left;
+            margin-left: -1.5em;
+        }
+        .map-column {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .flight-info-header-map {
+            background-color: #343a40;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .flight-info-header-map > div:first-child {
+            font-size: 0.9rem;
+        }
+        .flight-info-header-map button {
+            font-size: 0.8rem;
+        }
+        .map-placeholder {
+            background-color: #e9ecef; /* Placeholder for the map */
+            height: 200px; /* Adjust as needed */
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #6c757d;
+        }
+        .flight-time-input-group {
+            display: flex;
+            gap: 10px;
+        }
+        .flight-time-input-group .form-control {
+            flex-grow: 1;
+        }
+        /* date setion */
+   
+        .date-selector {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px 0px;
+            /* margin: 20px auto; */
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Center the text within the date selector */
+        }
+        .date-item {
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            white-space: nowrap;
+            display: inline-block; /* Important:  Use inline-block */
+            margin: 0 5px; /* Add a little horizontal margin between items */
+        }
+        .date-item:hover {
+            background-color: #e9ecef;
+        }
+        .date-item.active {
+            background-color: #007bff;
+            color: white;
+        }
+        .pagination-control {
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 5px;
+            transition: background-color 0.2s ease;
+            user-select: none;
+            display: inline-block; /* Important:  Use inline-block */
+        }
+        .pagination-control:hover {
+            background-color: #e9ecef;
+        }
+        .pagination-control.disabled {
+            color: #6c757d;
+            cursor: not-allowed;
+            background-color: transparent;
+        }
+        .pagination-control.disabled:hover {
+            background-color: transparent;
+        }
+
+        .date-list-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            overflow-y: hidden;
+            padding: 0px 10px;
+            justify-content: center; /* Center the date items horizontally */
+            align-items: center;
+            min-width: fit-content;
+        }
+
+        .date-list-container .date-item{
+            scroll-snap-align: center;
+            flex: 0 0 auto;
+            margin-right: 10px;
+        }
+        .date-list-container::-webkit-scrollbar {
+            display: none;
+        }
+        .date-list-wrapper{
+            display: flex;
+            align-items: center;
+            justify-content: center; /* center the controls and list */
+            gap: 10px;
+            width: fit-content;
+            margin: 0 auto;
+        }
+        /* hero section */
+        
+      /* You can add custom styles here, but Bootstrap should handle most of the layout */
+      .map-placeholder {
+        background-color: #e9ecef; /* Placeholder for the map */
+        height: 200px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #6c757d;
+        font-size: 1rem;
+      }
+      .flight-info-header {
+        background-color: #343a40;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.9rem;
+      }
+      .flight-info-header button {
+        font-size: 0.8rem;
+      }
+      .flight-details {
+        background-color: #ffffff;
+        border-radius: 5px;
+        padding: 20px;
+        box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+      }
+      .filter-group {
+        margin-bottom: 20px;
+      }
+  
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-white py-3 px-4 shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                <img src="./images/logo (1).png" alt="plane logo" />
+                </a>
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex flex-row gap-3 ms-4">
+                <li class="nav-item">
+                    <a class="nav-link active icon-text" href="#"><i class="bi bi-airplane-engines"></i> Fly</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link icon-text" href="#"><i class="bi bi-passport"></i> Visa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link icon-text" href="#"><i class="bi bi-briefcase"></i> Manage Booking</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav d-flex flex-row align-items-center gap-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link icon-text dropdown-toggle" href="#" id="navbarDropdownCall" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-headset"></i> Call us for lowest fares <i class="bi bi-chevron-down small"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownCall">
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <i class="bi bi-whatsapp text-success"></i> WhatsApp <i class="bi bi-chat-left-fill ms-auto text-secondary"></i>
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/ae.png" alt="UAE Flag" class="flag-icon rounded-circle" width="20" height="20"> UAE <i class="bi bi-telephone-fill ms-auto text-success"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/sa.png" alt="KSA Flag" class="flag-icon rounded-circle" width="20" height="20"> KSA <i class="bi bi-telephone-fill ms-auto text-success"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/eg.png" alt="Egypt Flag" class="flag-icon rounded-circle" width="20" height="20"> Egypt <i class="bi bi-telephone-fill ms-auto text-success"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link icon-text dropdown-toggle" href="#" id="navbarDropdownLang" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-translate"></i> English <i class="bi bi-chevron-down small"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownLang">
+                        <li><a class="dropdown-item" href="#">Arabic</a></li>
+                        <li><a class="dropdown-item" href="#">French</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link icon-text dropdown-toggle" href="#" id="navbarDropdownCurrency" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://flagcdn.com/us.svg" alt="US Flag" class="flag-icon rounded-circle" width="20" height="20" />
+                        USD <i class="bi bi-chevron-down small"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownCurrency">
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/us.png" alt="USD Flag" class="flag-icon rounded-circle" width="20" height="20"> USD Dollar
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/us.png" alt="UST Flag" class="flag-icon rounded-circle" width="20" height="20"> UST USD Tether
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/eu.png" alt="EUR Flag" class="flag-icon rounded-circle" width="20" height="20"> EUR Euro
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/gb.png" alt="GBP Flag" class="flag-icon rounded-circle" width="20" height="20"> GBP Pound
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/id.png" alt="IDR Flag" class="flag-icon rounded-circle" width="20" height="20"> IDR Rupiah
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/nz.png" alt="NZD Flag" class="flag-icon rounded-circle" width="20" height="20"> NZD Dollar
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/kz.png" alt="KZT Flag" class="flag-icon rounded-circle" width="20" height="20"> KZT Tenge
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/eg.png" alt="EGP Flag" class="flag-icon rounded-circle" width="20" height="20"> EGP Pound
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/al.png" alt="ALL Flag" class="flag-icon rounded-circle" width="20" height="20"> ALL Lek
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/in.png" alt="INR Flag" class="flag-icon rounded-circle" width="20" height="20"> INR Rupee
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/tr.png" alt="TRY Flag" class="flag-icon rounded-circle" width="20" height="20"> TRY Lira
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/dz.png" alt="DZD Flag" class="flag-icon rounded-circle" width="20" height="20"> DZD Unknown
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/ae.png" alt="AED Flag" class="flag-icon rounded-circle" width="20" height="20"> AED Dirham
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/sa.png" alt="SAR Flag" class="flag-icon rounded-circle" width="20" height="20"> SAR Riyal
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/au.png" alt="AUD Flag" class="flag-icon rounded-circle" width="20" height="20"> AUD Dollar
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/ch.png" alt="CHF Flag" class="flag-icon rounded-circle" width="20" height="20"> CHF Franc
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/cn.png" alt="CNY Flag" class="flag-icon rounded-circle" width="20" height="20"> CNY Renminbi
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/ng.png" alt="NGN Flag" class="flag-icon rounded-circle" width="20" height="20"> NGN Naira
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/bd.png" alt="BDT Flag" class="flag-icon rounded-circle" width="20" height="20"> BDT Taka
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/om.png" alt="OMR Flag" class="flag-icon rounded-circle" width="20" height="20"> OMR Rial
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/my.png" alt="MYR Flag" class="flag-icon rounded-circle" width="20" height="20"> MYR Ringgit
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/ru.png" alt="RUB Flag" class="flag-icon rounded-circle" width="20" height="20"> RUB Ruble
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="search-container ">
+        <div class="flight-details-header container">
+            <div>
+                <h2 class="h5">Lahore (LHE) <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.146-3.147a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5a.5.5 0 0 1-.5-.5z"/>
+                </svg> Dubai (DXB)</h2>
+                <p class="text-muted small">Oneway | 1 Passengers | Wed, 21 May 2025 | Economy</p>
+            </div>
+            <div>
+                <button class="btn btn-outline-primary">Modify Search</button>
+            </div>
+        </div>
+        </div>
+        <!-- date section -->
+        <div class="container">
+            <div class="date-selector ">
+                <div class="date-list-wrapper">
+                    <div class="pagination-control" id="prev-week">&lt;</div>
+                    <div class="date-list-container" id="date-list">
+                    </div>
+                     <div class="pagination-control" id="next-week">&gt;</div>
+                </div>
+            </div>
+        </div>
+        <!-- hero section -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="filter-group card p-2 m-2" >
+                        <h4>Filter</h4>
+                        <hr>
+                        <div>
+                            <div class="card-body">
+                                <h6 class="card-title">Stops</h6>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="allFlights">
+                                    <label class="form-check-label" for="allFlights">
+                                        All Flights
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="nonStop">
+                                    <label class="form-check-label" for="nonStop">
+                                        Non Stop
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="1Stop">
+                                    <label class="form-check-label" for="1Stop">
+                                        1 Stop
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <h6 class="card-title">Flight Time</h6>
+                        <div class="">
+                            <div class="card-body">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="earlyMorning">
+                                    <label class="form-check-label" for="earlyMorning">
+                                        Early Morning (00-06 AM)
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="morning">
+                                    <label class="form-check-label" for="morning">
+                                        Morning (06-12 AM)
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                     <input class="form-check-input" type="checkbox" id="afternoon">
+                                    <label class="form-check-label" for="afternoon">
+                                        Afternoon (12-06 PM)
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                     <input class="form-check-input" type="checkbox" id="evening">
+                                    <label class="form-check-label" for="evening">
+                                        Evening  (06-12 PM)
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="filter-group">
+                      <h6 class="card-title">Flight Time</h6>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="earlyMorning">
+                                    <label class="form-check-label" for="earlyMorning">
+                                        Early Morning (00-06 AM)
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="morning">
+                                    <label class="form-check-label" for="morning">
+                                        Morning (06-12 AM)
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                     <input class="form-check-input" type="checkbox" id="afternoon">
+                                    <label class="form-check-label" for="afternoon">
+                                        Afternoon (12-06 PM)
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                     <input class="form-check-input" type="checkbox" id="evening">
+                                    <label class="form-check-label" for="evening">
+                                        Evening  (06-12 PM)
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="col-md-8">
+                    <div class="map-placeholder">
+                        Map Visualization
+                    </div>
+                    <div class="flight-info-header">
+                        <div>Lahore to Dubai Flights (81 Flights Available)</div>
+                        <div><button class="btn btn-sm btn-outline-light">Cheapest</button> | Fastest</div>
+                    </div>
+                    <!-- flight card -->
+                    <div class="flight-card">
+                        <div class="flight-header">
+                            <div class="airline-info">
+                                <div class="airline-logo">
+                                    <img src="https://via.placeholder.com/30" alt="Airline Logo">
+                                </div>
+                                <div class="flight-number-info">
+                                    <span class="flight-number">UL 154</span>
+                                    <div class="popup">
+                                        <img src="https://via.placeholder.com/50" alt="Airline Full Logo" class="popup-logo">
+                                        <span class="popup-flight-number">UL 154</span>
+                                        <span class="popup-route">LHE to CMB (3h 55m)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flight-route">
+                                <div class="departure">
+                                    <span class="time">06:50</span>
+                                    <span class="airport">LHE</span>
+                                </div>
+                                <div class="duration-layover">
+                                    <div class="layover-details">
+                                        <i class="fas fa-plane-departure"></i>
+                                        <span class="layover-time">7h 10m</span>
+                                        <span class="layover-airport">CMB</span>
+                                    </div>
+                                </div>
+                                <div class="arrival">
+                                    <span class="time">21:40</span>
+                                    <span class="airport">DXB</span>
+                                </div>
+                                <div class="total-duration">
+                                    <span class="duration">15h 50m</span>
+                                </div>
+                            </div>
+                            <div class="booking-info">
+                                <div class="total-fare">
+                                    <span class="label">Total fare</span>
+                                    <span class="price">$322.04</span>
+                                </div>
+                                <button class="book-button">Book →</button>
+                            </div>
+                        </div>
+                        <div class="luggage-info">
+                            <div class="luggage-item">
+                                <i class="fas fa-suitcase-rolling"></i>
+                                <span>7 kg</span>
+                            </div>
+                            <div class="luggage-item">
+                                <i class="fas fa-suitcase"></i>
+                                <span>30 kg</span>
+                            </div>
+                            <div class="more-options">
+                                <i class="fas fa-info-circle"></i>
+                                <i class="fas fa-share-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+<style>
+    .flight-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: sans-serif;
+}
+
+.flight-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.airline-info {
+    display: flex;
+    align-items: center;
+    position: relative; /* For popup positioning */
+}
+
+.airline-logo img {
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    margin-right: 8px;
+}
+
+.flight-number-info {
+    position: relative;
+}
+
+.flight-number {
+    font-weight: bold;
+}
+
+.popup {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100%);
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease-in-out;
+    white-space: nowrap;
+}
+
+.flight-number-info:hover .popup {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.popup-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+}
+
+.popup-flight-number {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.popup-route {
+    font-size: 0.9em;
+    color: #555;
+}
+
+.flight-route {
+    display: flex;
+    align-items: center;
+}
+
+.departure, .arrival {
+    text-align: center;
+}
+
+.departure .time, .arrival .time {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.departure .airport, .arrival .airport {
+    color: #555;
+    font-size: 0.9em;
+}
+
+.duration-layover {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 16px;
+    color: #555;
+    font-size: 0.9em;
+}
+
+.layover-details {
+    display: flex;
+    align-items: center;
+}
+
+.layover-details i {
+    font-size: 1.2em;
+    margin-right: 4px;
+}
+
+.total-duration {
+    font-size: 0.9em;
+    color: #555;
+    margin-left: 16px;
+}
+
+.booking-info {
+    text-align: right;
+}
+
+.total-fare .label {
+    font-size: 0.9em;
+    color: #555;
+    display: block;
+}
+
+.total-fare .price {
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.book-button {
+    background-color: #8BC34A;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.book-button:hover {
+    background-color: #689F38;
+}
+
+.luggage-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: #555;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+.luggage-item {
+    display: flex;
+    align-items: center;
+}
+
+.luggage-item i {
+    font-size: 1.2em;
+    margin-right: 4px;
+}
+
+.more-options {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.more-options i {
+    cursor: pointer;
+    font-size: 1.1em;
+}
+</style>
+<script>
+    const dateList = document.getElementById('date-list');
+    const prevWeekBtn = document.getElementById('prev-week');
+    const nextWeekBtn = document.getElementById('next-week');
+
+    let startDate = new Date();
+    startDate.setDate(startDate.getDate() - 3); // Start from 3 days before today
+
+    function generateDates(start) {
+        const dates = [];
+        for (let i = 0; i < 7; i++) {
+            const currentDate = new Date(start);
+            currentDate.setDate(start.getDate() + i);
+            dates.push(currentDate);
+        }
+        return dates;
+    }
+
+   function displayDates(dates) {
+        dateList.innerHTML = ''; // Clear previous dates
+        dates.forEach(date => {
+            const dateItem = document.createElement('div');
+            dateItem.classList.add('date-item');
+            if (date.toDateString() === new Date().toDateString()) {
+                dateItem.classList.add('active');
+            }
+            dateItem.textContent = `${getDayName(date)}, ${date.getDate()} ${getMonthName(date)}`;
+            dateItem.addEventListener('click', () => {
+                // Remove active class from all items
+                document.querySelectorAll('.date-item').forEach(item => item.classList.remove('active'));
+                dateItem.classList.add('active');
+                // In a real application, you would fetch flights for this date
+                console.log('Selected date:', date.toDateString());
+            });
+            dateList.appendChild(dateItem);
+        });
+    }
+
+    function getDayName(date) {
+        const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        return days[date.getDay()];
+    }
+
+    function getMonthName(date) {
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        return months[date.getMonth()];
+    }
+
+    function shuffleDates(direction) {
+        startDate.setDate(startDate.getDate() + (direction * 7));
+        const newDates = generateDates(startDate);
+        displayDates(newDates);
+    }
+
+    // Initial display
+    const initialDates = generateDates(startDate);
+    displayDates(initialDates);
+
+    // Event listeners for the arrow buttons
+    prevWeekBtn.addEventListener('click', () => shuffleDates(-1));
+    nextWeekBtn.addEventListener('click', () => shuffleDates(1));
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</html>

@@ -89,11 +89,17 @@ body {
 }
 
 .booking-card {
+
   background: white;
   border-radius: 24px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   padding: 30px;
   margin-top: -60px;
+}
+.header{
+  background-image: url(./images/homepage-hero-new.png);
+  background: linear-gradient(to right, #1e293b, #334155);
+  color: white;
 }
 /* section 3 */
 
@@ -167,4 +173,12 @@ body {
 .nav-tabs .nav-link:focus {
     outline: 0;
     box-shadow: none;
+}
+/* footer */
+.list-unstyled a.text-muted {
+  text-decoration: none; /* Remove underline by default */
+}
+
+.list-unstyled a.text-muted:hover {
+  text-decoration: underline; /* Add underline on hover */
 }

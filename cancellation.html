@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancellation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-white py-3 px-4 shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                <img src="./images/logo (1).png" alt="plane logo" />
+                <!-- <span class="logo-text">seeru</span> -->
+            </a>
+    
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex flex-row gap-3 ms-4">
+                <li class="nav-item">
+                    <a class="nav-link active icon-text" href="#"><i class="bi bi-airplane-engines"></i> Fly</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link icon-text" href="#"><i class="bi bi-passport"></i> Visa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link icon-text" href="#"><i class="bi bi-briefcase"></i> Manage Booking</a>
+                </li>
+            </ul>
+    
+            <ul class="navbar-nav d-flex flex-row align-items-center gap-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link icon-text dropdown-toggle" href="#" id="navbarDropdownCall" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-headset"></i> Call us for lowest fares <i class="bi bi-chevron-down small"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownCall">
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <i class="bi bi-whatsapp text-success"></i> WhatsApp <i class="bi bi-chat-left-fill ms-auto text-secondary"></i>
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/ae.png" alt="UAE Flag" class="flag-icon rounded-circle" width="20" height="20"> UAE <i class="bi bi-telephone-fill ms-auto text-success"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/sa.png" alt="KSA Flag" class="flag-icon rounded-circle" width="20" height="20"> KSA <i class="bi bi-telephone-fill ms-auto text-success"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/eg.png" alt="Egypt Flag" class="flag-icon rounded-circle" width="20" height="20"> Egypt <i class="bi bi-telephone-fill ms-auto text-success"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link icon-text dropdown-toggle" href="#" id="navbarDropdownLang" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-translate"></i> English <i class="bi bi-chevron-down small"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownLang">
+                        <li><a class="dropdown-item" href="#">Arabic</a></li>
+                        <li><a class="dropdown-item" href="#">French</a></li>
+                        </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link icon-text dropdown-toggle" href="#" id="navbarDropdownCurrency" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://flagcdn.com/us.svg" alt="US Flag" class="flag-icon rounded-circle" width="20" height="20" />
+                        USD <i class="bi bi-chevron-down small"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownCurrency">
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/us.png" alt="USD Flag" class="flag-icon rounded-circle" width="20" height="20"> USD Dollar
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/us.png" alt="UST Flag" class="flag-icon rounded-circle" width="20" height="20"> UST USD Tether
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/eu.png" alt="EUR Flag" class="flag-icon rounded-circle" width="20" height="20"> EUR Euro
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/gb.png" alt="GBP Flag" class="flag-icon rounded-circle" width="20" height="20"> GBP Pound
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/id.png" alt="IDR Flag" class="flag-icon rounded-circle" width="20" height="20"> IDR Rupiah
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/nz.png" alt="NZD Flag" class="flag-icon rounded-circle" width="20" height="20"> NZD Dollar
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/kz.png" alt="KZT Flag" class="flag-icon rounded-circle" width="20" height="20"> KZT Tenge
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/eg.png" alt="EGP Flag" class="flag-icon rounded-circle" width="20" height="20"> EGP Pound
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/al.png" alt="ALL Flag" class="flag-icon rounded-circle" width="20" height="20"> ALL Lek
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/in.png" alt="INR Flag" class="flag-icon rounded-circle" width="20" height="20"> INR Rupee
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/tr.png" alt="TRY Flag" class="flag-icon rounded-circle" width="20" height="20"> TRY Lira
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/dz.png" alt="DZD Flag" class="flag-icon rounded-circle" width="20" height="20"> DZD Unknown
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/ae.png" alt="AED Flag" class="flag-icon rounded-circle" width="20" height="20"> AED Dirham
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/sa.png" alt="SAR Flag" class="flag-icon rounded-circle" width="20" height="20"> SAR Riyal
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/au.png" alt="AUD Flag" class="flag-icon rounded-circle" width="20" height="20"> AUD Dollar
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/ch.png" alt="CHF Flag" class="flag-icon rounded-circle" width="20" height="20"> CHF Franc
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/cn.png" alt="CNY Flag" class="flag-icon rounded-circle" width="20" height="20"> CNY Renminbi
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/ng.png" alt="NGN Flag" class="flag-icon rounded-circle" width="20" height="20"> NGN Naira
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/bd.png" alt="BDT Flag" class="flag-icon rounded-circle" width="20" height="20"> BDT Taka
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/om.png" alt="OMR Flag" class="flag-icon rounded-circle" width="20" height="20"> OMR Rial
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/my.png" alt="MYR Flag" class="flag-icon rounded-circle" width="20" height="20"> MYR Ringgit
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/ru.png" alt="RUB Flag" class="flag-icon rounded-circle" width="20" height="20"> RUB Ruble
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- section -->
+    <section class="custom-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>
+                        Cancellation and Refund Policy</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--  -->
+    <section class="py-5">
+        <div class="container">
+     
+          <p class=" mb-5">At Seeru, we recognize that travel plans may change, and we are committed to providing our valued customers with flexible cancellation and refund options. Please take a moment to review our cancellation and refund policy outlined below.</p>
+      
+          <h5>Cancellation Fees</h5>
+          <p>Cancellation fees may be applicable based on the policies of the airline, hotel, or other travel service provider. These fees are typically detailed during the booking process and can vary depending on factors such as fare type, booking class, and specific terms established by the provider.</p>
+      
+          <h5>Refund Eligibility</h5>
+          <p>Eligibility for a refund is contingent upon the terms and conditions set forth by the respective travel service provider (e.g., airline, hotel, car rental agency). It's important to note that certain fares, particularly non-refundable ones, may not qualify for a refund.</p>
+      
+          <h5>Refund Process</h5>
+          <p>To initiate a refund, kindly reach out to our Customer Happiness Team or use our live chat service. Our dedicated team will guide you through the process and assist in liaising with the relevant travel service provider.</p>
+      
+          <h5>Processing Time</h5>
+          <p>Refund processing times vary and are determined by the policies of the specific travel service provider. While we make every effort to expedite the process, we ask for your understanding and patience, allowing a reasonable timeframe for the refund to be processed.</p>
+      
+          <h5>Flight Changes and Modifications</h5>
+          <p>Some airlines may offer the option to make changes to your booking. Please be aware that additional fees and fare differences may apply. For assistance with modifications, kindly contact our customer support team.</p>
+      
+          <h5>Special Promotions and Offers</h5>
+          <p>Special promotions or discounted fares may have unique cancellation and refund policies. These policies will be clearly communicated at the time of booking, ensuring transparency and clarity for our customers.</p>
+      
+          <p>At Seeru, we are committed to providing excellent customer service, and we appreciate your understanding and cooperation with our cancellation and refund procedures. If you have any questions or need further assistance, please don't hesitate to reach out to our Customer Happiness Team at <a href="mailto:help@seeru.com">help@seeru.com</a>. Safe travels!</p>
+        </div>
+      </section>
+      
+      
+    <!-- footer -->
+    <section>
+        <footer class="bg-light pt-4 pb-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <img src="./images/logo (1).png" alt="Seeru Logo" width="100" class="mb-2">
+                        <p class="text-muted">Your gateway to personalized travel experiences, simplifying your journey from flights to accommodations.</p>
+                        <div class="d-flex">
+                            <a href="#" class="text-dark me-2"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-dark me-2"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-dark"><i class="fab fa-facebook-f"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 mb-4">
+                        <h5 class="text-dark mb-3">Useful Links</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="./booking.html" class="text-muted">My Bookings</a></li>
+                            <li><a href="./term.html" class="text-muted">Terms of Use</a></li>
+                            <li><a href="#" class="text-muted">Cancellation Policy</a></li>
+                            <li><a href="#" class="text-muted">Privacy & Data Policy</a></li>
+                             <li><a href="#" class="text-muted">Cookie Policy</a></li>
+                              <li><a href="#" class="text-muted">FAQ</a></li>
+                               <li><a href="#" class="text-muted">Blog</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-6 mb-4">
+                        <h5 class="text-dark mb-3">Explore</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-muted">Cheap Flights</a></li>
+                            <li><a href="#" class="text-muted">Baggage Fee</a></li>
+                            <li><a href="#" class="text-muted">About Us</a></li>
+                            <li><a href="#" class="text-muted">Contact Us</a></li>
+                             <li><a href="#" class="text-muted">Career</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-6 mb-4">
+                        <h5 class="text-dark mb-3">Services</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-muted">Flight Booking</a></li>
+                            <li><a href="#" class="text-muted">Visa</a></li>
+                            <li><a href="#" class="text-muted">Advertise with Us</a></li>
+                            <li><a href="#" class="text-muted">B2B Agent Portal</a></li>
+        
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <h5 class="text-dark mb-3">Payment Method</h5>
+                        <div class="d-flex flex-wrap gap-2">
+                            <img src="./images/visa.png" alt="Visa" height="30">
+                            <img src="./images/paypal.png" alt="PayPal" height="30">
+                            <img src="./images/mastercard.png" alt="Mastercard" height="30">
+                            <img src="./images/discover.png" alt="Discover" height="30">
+                            <img src="./images/paypal.png" alt="Google Pay" height="30">
+                            <img src="./images/applepay.png" alt="Apple Pay" height="30">
+                            <img src="./images/bank.png" alt="Bank Transfer" height="30">
+                            <img src="./images/fawry.png" alt="Fawry" height="30">
+                            <img src="./images/bitcoin.png" alt="Bitcoin" height="30">
+                            </div>
+                        <h5 class="text-dark mt-3">Contact Us</h5>
+                        <p class="text-muted">
+                            <i class="fas fa-envelope me-2"></i>support@seeru.com
+                        </p>
+                    </div>
+                    
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6 text-start py-2">
+                      <div class="d-flex align-items-center">
+                        <a href="#" class="text-dark me-3"><i class="fas fa-envelope me-1"></i> Email Us</a>
+                        <a href="#" class="text-dark me-3"><i class="fas fa-comment-alt me-1"></i> Chat with Us</a>
+                        <a href="#" class="text-dark"><i class="fas fa-phone-alt me-1"></i> Call Us</a>
+                      </div>
+                    </div>
+                    <div class="col-md-6 text-end py-2">
+                      <p class="text-muted small">© 2025 Seeru.com. All rights reserved.</p>
+                    </div>
+                  </div>
+            </div>
+        </footer>
+     </section>
+</body>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</html>

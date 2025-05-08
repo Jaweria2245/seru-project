@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Search</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css">
+    <style>
+        /* Basic custom styling to resemble the image */
+        body {
+            font-family: sans-serif;
+            background-color: #f8f9fa;
+        }
+        .search-container {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .flight-details-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .flight-details-header h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0;
+        }
+        .flight-details-header p {
+            font-size: 0.875rem;
+            color: #6c757d;
+            margin-bottom: 0;
+        }
+        .date-selector {
+            margin-bottom: 20px;
+        }
+        .filter-map-container {
+            display: flex;
+            gap: 20px;
+        }
+        .filter-section {
+            flex: 0 0 300px; /* Adjust width as needed */
+            padding-right: 15px;
+        }
+        .filter-group {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .filter-group:last-child {
+            border-bottom: none;
+        }
+        .filter-group h6 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        .form-check-label {
+            display: flex;
+            align-items: center;
+        }
+        .form-check-label i {
+            margin-right: 8px;
+            color: #6c757d; /* Adjust icon color */
+        }
+        .form-check-input:hover + .form-check-label {
+            background-color: #f0f0f0; /* Basic hover effect */
+            cursor: pointer;
+        }
+        .flight-info-header-map {
+            background-color: #343a40;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .flight-info-header-map > div:first-child {
+            font-size: 0.9rem;
+        }
+        .flight-info-header-map button {
+            font-size: 0.8rem;
+        }
+        .flight-map {
+            flex: 1;
+            background-color: #e9ecef; /* Placeholder for the map */
+            height: auto; /* Adjust as needed */
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column; /* Stack header and map placeholder */
+            align-items: stretch; /* Make header and placeholder full width */
+            color: #6c757d;
+        }
+        .flight-map-placeholder {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .flight-list-body {
+            padding: 15px;
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            margin-top: 20px; /* Add some space above the flight list */
+        }
+        /* More specific styling can be added as needed */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="search-container">
+            <div class="flight-details-header">
+                <div>
+                    <h2 class="h5">Lahore (LHE) <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.146-3.147a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5a.5.5 0 0 1-.5-.5z"/>
+                    </svg> Dubai (DXB)</h2>
+                    <p class="text-muted small">Oneway | 1 Passengers | Wed, 21 May 2025 | Economy</p>
+                </div>
+                <div>
+                    <button class="btn btn-outline-primary">Modify Search</button>
+                </div>
+            </div>
+
+            <div class="date-selector">
+                <nav aria-label="Flight Dates">
+                    <ul class="pagination pagination-sm">
+                        <li class="page-item"><a class="page-link" href="#">&lt;</a></li>
+                        <li class="page-item"><a class="page-link text-muted" href="#">Sun, 18 May</a></li>
+                        <li class="page-item"><a class="page-link text-muted" href="#">Mon, 19 May</a></li>
+                        <li class="page-item"><a class="page-link text-muted" href="#">Tue, 20 May</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">Wed, 21 May</a></li>
+                        <li class="page-item"><a class="page-link text-muted" href="#">Thu, 22 May</a></li>
+                        <li class="page-item"><a class="page-link text-muted" href="#">Fri, 23 May</a></li>
+                        <li class="page-item"><a class="page-link text-muted" href="#">Sat, 24 May</a></li>
+                        <li class="page-item"><a class="page-link" href="#">&gt;</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="filter-map-container">
+                <div class="filter-section">
+                    <h5>Filter</h5>
+                    <div class="filter-group">
+                        <h6>Stops</h6>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="allStops" checked>
+                            <label class="form-check-label small" for="allStops"><i class="bi bi-airplane-fill"></i> All Flights</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="nonStop">
+                            <label class="form-check-label small" for="nonStop"><i class="bi bi-stop-circle-fill"></i> Non Stop</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="oneStop">
+                            <label class="form-check-label small" for="oneStop"><i class="bi bi-stop-circle"></i> 1 Stop</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="twoStops">
+                            <label class="form-check-label small" for="twoStops"><i class="bi bi-stop-circle-dotted"></i> 2 Stops</label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h6>Flight Time</h6>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="earlyMorning">
+                            <label class="form-check-label small" for="earlyMorning"><i class="bi bi-sunrise-fill"></i> Early Morning <span class="text-muted">(00-06 AM)</span></label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="morning">
+                            <label class="form-check-label small" for="morning"><i class="bi bi-sun-fill"></i> Morning <span class="text-muted">(06-12 AM)</span></label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="afternoon">
+                            <label class="form-check-label small" for="afternoon"><i class="bi bi-brightness-high-fill"></i> Afternoon <span class="text-muted">(12-06 PM)</span></label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="evening">
+                            <label class="form-check-label small" for="evening"><i class="bi bi-moon-stars-fill"></i> Evening <span class="text-muted">(06-12 PM)</span></label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h6>Luggage</h6>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="noLuggage">
+                            <label class="form-check-label small" for="noLuggage"><i class="bi bi-bag-x-fill"></i> No Luggage</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="25kg">
+                            <label class="form-check-label small" for="25kg"><i class="bi bi-bag-fill"></i> 25 kg</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="30kg">
+                            <label class="form-check-label small" for="30kg"><i class="bi bi-bag-fill"></i> 30 kg</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="35kg">
+                            <label class="form-check-label small" for="35kg"><i class="bi bi-bag-fill"></i> 35 kg</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="40kg">
+                            <label class="form-check-label small" for="40kg"><i class="bi bi-bag-fill"></i> 40 kg</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="flight-map">
+                    <div class="flight-info-header-map">
+                        <div>Lahore to Dubai Flights <span class="text-muted">(41 Flights Available)</span></div>
+                        <div><button class="btn btn-sm btn-outline-light">Cheapest</button> | Fastest</div>
+                    </div>
+                    <div class="flight-map-placeholder">
+                        <p class="text-center">Map Visualization (Placeholder)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flight-list-body">
+                <p class="text-muted">Flight details will appear here.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

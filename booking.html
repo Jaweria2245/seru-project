@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Booking</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .card {
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+        }
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .form-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: #34495e;
+            margin-bottom: 8px;
+        }
+        .form-control {
+            border-radius: 6px;
+            border: 1px solid #bdc3c7;
+            padding: 10px;
+            font-size: 14px;
+            color: #2c3e50;
+        }
+        .form-control:focus {
+            border-color: #5bc0de;
+            box-shadow: 0 0 0 3px rgba(91, 192, 222, 0.1);
+            outline: none;
+        }
+        .btn-primary {
+            border-radius: 6px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 500;
+            background-color: #2ecc71;
+            border: none;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #218838;
+        }
+        .btn-primary:active{
+           background-color: #1e7e34;
+        }
+        .text-center{
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg bg-white py-3 px-4 shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                <img src="./images/logo (1).png" alt="plane logo" />
+                <!-- <span class="logo-text">seeru</span> -->
+            </a>
+    
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex flex-row gap-3 ms-4">
+                <li class="nav-item">
+                    <a class="nav-link active icon-text" href="#"><i class="bi bi-airplane-engines"></i> Fly</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link icon-text" href="#"><i class="bi bi-passport"></i> Visa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link icon-text" href="#"><i class="bi bi-briefcase"></i> Manage Booking</a>
+                </li>
+            </ul>
+    
+            <ul class="navbar-nav d-flex flex-row align-items-center gap-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link icon-text dropdown-toggle" href="#" id="navbarDropdownCall" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-headset"></i> Call us for lowest fares <i class="bi bi-chevron-down small"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownCall">
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <i class="bi bi-whatsapp text-success"></i> WhatsApp <i class="bi bi-chat-left-fill ms-auto text-secondary"></i>
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/ae.png" alt="UAE Flag" class="flag-icon rounded-circle" width="20" height="20"> UAE <i class="bi bi-telephone-fill ms-auto text-success"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/sa.png" alt="KSA Flag" class="flag-icon rounded-circle" width="20" height="20"> KSA <i class="bi bi-telephone-fill ms-auto text-success"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/eg.png" alt="Egypt Flag" class="flag-icon rounded-circle" width="20" height="20"> Egypt <i class="bi bi-telephone-fill ms-auto text-success"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link icon-text dropdown-toggle" href="#" id="navbarDropdownLang" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-translate"></i> English <i class="bi bi-chevron-down small"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownLang">
+                        <li><a class="dropdown-item" href="#">Arabic</a></li>
+                        <li><a class="dropdown-item" href="#">French</a></li>
+                        </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link icon-text dropdown-toggle" href="#" id="navbarDropdownCurrency" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://flagcdn.com/us.svg" alt="US Flag" class="flag-icon rounded-circle" width="20" height="20" />
+                        USD <i class="bi bi-chevron-down small"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownCurrency">
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/us.png" alt="USD Flag" class="flag-icon rounded-circle" width="20" height="20"> USD Dollar
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/us.png" alt="UST Flag" class="flag-icon rounded-circle" width="20" height="20"> UST USD Tether
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/eu.png" alt="EUR Flag" class="flag-icon rounded-circle" width="20" height="20"> EUR Euro
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/gb.png" alt="GBP Flag" class="flag-icon rounded-circle" width="20" height="20"> GBP Pound
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/id.png" alt="IDR Flag" class="flag-icon rounded-circle" width="20" height="20"> IDR Rupiah
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/nz.png" alt="NZD Flag" class="flag-icon rounded-circle" width="20" height="20"> NZD Dollar
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/kz.png" alt="KZT Flag" class="flag-icon rounded-circle" width="20" height="20"> KZT Tenge
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/eg.png" alt="EGP Flag" class="flag-icon rounded-circle" width="20" height="20"> EGP Pound
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/al.png" alt="ALL Flag" class="flag-icon rounded-circle" width="20" height="20"> ALL Lek
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/in.png" alt="INR Flag" class="flag-icon rounded-circle" width="20" height="20"> INR Rupee
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/tr.png" alt="TRY Flag" class="flag-icon rounded-circle" width="20" height="20"> TRY Lira
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/dz.png" alt="DZD Flag" class="flag-icon rounded-circle" width="20" height="20"> DZD Unknown
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/ae.png" alt="AED Flag" class="flag-icon rounded-circle" width="20" height="20"> AED Dirham
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/sa.png" alt="SAR Flag" class="flag-icon rounded-circle" width="20" height="20"> SAR Riyal
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/au.png" alt="AUD Flag" class="flag-icon rounded-circle" width="20" height="20"> AUD Dollar
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/ch.png" alt="CHF Flag" class="flag-icon rounded-circle" width="20" height="20"> CHF Franc
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/cn.png" alt="CNY Flag" class="flag-icon rounded-circle" width="20" height="20"> CNY Renminbi
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/ng.png" alt="NGN Flag" class="flag-icon rounded-circle" width="20" height="20"> NGN Naira
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/bd.png" alt="BDT Flag" class="flag-icon rounded-circle" width="20" height="20"> BDT Taka
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/om.png" alt="OMR Flag" class="flag-icon rounded-circle" width="20" height="20"> OMR Rial
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/my.png" alt="MYR Flag" class="flag-icon rounded-circle" width="20" height="20"> MYR Ringgit
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <img src="https://flagcdn.com/w20/ru.png" alt="RUB Flag" class="flag-icon rounded-circle" width="20" height="20"> RUB Ruble
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title text-center">Manage Booking</h2>
+                        <p class="text-muted text-center mb-4">To view, print, amend, and cancel your reservation, please make sure to fill the following fields with your reservation details:</p>
+                        <form>
+                            <div class="mb-3">
+                                <label for="bookingNumber" class="form-label">Booking Number</label>
+                                <input type="text" class="form-control" id="bookingNumber" placeholder="Booking reference/Airline PNR">
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Email Address">
+                            </div>
+                            <div class="text-center mt-4">
+                                <button type="submit" class="btn btn-primary">Continue →</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
